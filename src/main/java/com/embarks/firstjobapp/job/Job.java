@@ -1,13 +1,23 @@
 package com.embarks.firstjobapp.job;
 
+import jakarta.persistence.*;
+
+@Entity
+//@Table(name = "job_table") if I want to customize the name of the table
 public class Job {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    //using JPA we need to define the empty constructor
+    public Job() {
+    }
 
     public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
         this.id = id;
